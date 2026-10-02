@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doce Encanto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', system-ui, sans-serif; color: #1a1a1a; line-height: 1.6; overflow-x: hidden; }
+
+  /* HEADER */
+  header {
+    position: relative; color: white; padding: 160px 20px 120px; text-align: center;
+    background: linear-gradient(135deg, #ec4899ee, #9d174dee), url('https://picsum.photos/seed/doce-encantobanner/1920/900');
+    background-size: cover; background-position: center; background-attachment: fixed;
+  }
+  header::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+    background: linear-gradient(to top, white, transparent);
+  }
+  header h1 {
+    font-size: 4em; font-weight: 900; margin-bottom: 20px;
+    letter-spacing: -2px; line-height: 1.1;
+    animation: fadeUp 0.8s ease;
+  }
+  header p {
+    font-size: 1.5em; opacity: 0.98; margin-bottom: 45px;
+    font-weight: 300; animation: fadeUp 1s ease;
+  }
+  .botao {
+    display: inline-block; background: white; color: #9d174d;
+    padding: 20px 50px; font-size: 1.1em; font-weight: 700;
+    border-radius: 50px; text-decoration: none;
+    transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    animation: fadeUp 1.2s ease;
+  }
+  .botao:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 15px 40px rgba(0,0,0,0.35); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SEÇÕES */
+  section { padding: 100px 20px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .titulo-secao {
+    text-align: center; font-size: 2.8em; color: #9d174d;
+    margin-bottom: 15px; font-weight: 800; letter-spacing: -1px;
+  }
+  .subtitulo-secao { text-align: center; color: #666; margin-bottom: 60px; font-size: 1.2em; font-weight: 300; }
+
+  /* ANIMAÇÃO SCROLL */
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+  .reveal.ativo { opacity: 1; transform: translateY(0); }
+
+  /* SOBRE */
+  .sobre { background: #fafafa; }
+  .sobre p { font-size: 1.25em; max-width: 850px; margin: 0 auto; text-align: center; color: #444; font-weight: 300; }
+
+  /* STATS */
+  .stats { background: linear-gradient(135deg, #ec4899, #9d174d); color: white; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+  .stat { text-align: center; padding: 20px; }
+  .stat .num { font-size: 3.5em; font-weight: 900; letter-spacing: -2px; margin-bottom: 8px; }
+  .stat .label { font-size: 1.05em; opacity: 0.9; font-weight: 300; }
+
+  /* SERVIÇOS */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+  .card {
+    background: white; padding: 40px 30px; border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #f0f0f0;
+    transition: all 0.3s; text-align: center;
+  }
+  .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); border-color: #ec4899; }
+  .card .icon {
+    font-size: 3em; margin-bottom: 20px;
+    display: inline-block; padding: 20px; border-radius: 50%;
+    background: #ec489915;
+  }
+  .card h3 { color: #9d174d; font-size: 1.35em; margin-bottom: 12px; font-weight: 700; }
+  .card p { color: #666; font-weight: 300; }
+
+  /* GALERIA */
+  .galeria { background: #fafafa; }
+  .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+  .foto { overflow: hidden; border-radius: 15px; aspect-ratio: 1; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .foto:hover img { transform: scale(1.15) rotate(2deg); }
+
+  /* DEPOIMENTOS */
+  .depoimentos { background: linear-gradient(135deg, #ec4899, #9d174d); color: white; }
+  .depoimentos .titulo-secao { color: white; }
+  .depoimento { background: rgba(255,255,255,0.15); padding: 35px 30px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+  .avatar { margin-bottom: 20px; }
+  .avatar img { width: 80px; height: 80px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.4); object-fit: cover; }
+  .depoimento p { font-style: italic; margin-bottom: 20px; font-size: 1.1em; font-weight: 300; }
+  .depoimento strong { font-weight: 700; }
+
+  /* FAQ */
+  .faq { background: #fafafa; }
+  .faq-lista { max-width: 850px; margin: 0 auto; }
+  details { background: white; border-radius: 15px; padding: 25px 30px; margin-bottom: 15px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.3s; }
+  details:hover { box-shadow: 0 6px 25px rgba(0,0,0,0.1); }
+  details[open] { border-left: 5px solid #ec4899; }
+  summary { font-weight: 700; color: #9d174d; font-size: 1.15em; list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; color: #ec4899; font-size: 1.5em; font-weight: 300; transition: transform 0.3s; }
+  details[open] summary::after { content: '−'; }
+  details p { margin-top: 18px; color: #555; font-weight: 300; }
+
+  /* MAPA */
+  .mapa { background: white; }
+  .mapa-box { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+  .mapa-box iframe { width: 100%; height: 450px; border: 0; display: block; }
+
+  /* CONTATO */
+  .contato-secao { background: linear-gradient(135deg, #ec4899, #9d174d); color: white; }
+  .contato-secao .titulo-secao { color: white; }
+  .form { max-width: 600px; margin: 0 auto; }
+  .form input, .form textarea {
+    width: 100%; padding: 18px 25px; border-radius: 12px;
+    border: 2px solid transparent; margin-bottom: 15px;
+    font-size: 1em; font-family: inherit;
+    background: rgba(255,255,255,0.95); transition: border-color 0.3s;
+  }
+  .form input:focus, .form textarea:focus { outline: none; border-color: white; }
+  .form textarea { min-height: 140px; resize: vertical; }
+  .form button {
+    background: white; color: #9d174d; border: none;
+    padding: 18px 45px; font-size: 1.1em; font-weight: 700;
+    border-radius: 50px; cursor: pointer;
+    transition: all 0.3s; font-family: inherit;
+  }
+  .form button:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+  /* CTA FINAL */
+  .cta-final { text-align: center; background: #fafafa; }
+  .cta-final h2 { font-size: 2.5em; color: #9d174d; margin-bottom: 20px; font-weight: 800; }
+  .botao-secundario { background: #ec4899; color: white; margin-top: 25px; }
+  .botao-secundario:hover { background: #9d174d; }
+  .contato { margin-top: 20px; font-size: 1.15em; color: #555; }
+
+  /* RODAPÉ */
+  footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 60px 20px; }
+  footer p { margin-bottom: 8px; font-weight: 300; }
+  footer strong { color: white; font-weight: 700; }
+
+  /* FLUTUANTE */
+  .wpp-flutuante {
+    position: fixed; bottom: 30px; right: 30px;
+    background: #25D366; color: white;
+    width: 70px; height: 70px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2em; text-decoration: none;
+    box-shadow: 0 8px 25px rgba(37,211,102,0.5);
+    transition: transform 0.3s;
+    z-index: 1000; animation: pulse 2s infinite;
+  }
+  .wpp-flutuante:hover { transform: scale(1.15) rotate(10deg); }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+    70% { box-shadow: 0 0 0 25px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 100px 20px 80px; background-attachment: scroll; }
+    header h1 { font-size: 2.4em; letter-spacing: -1px; }
+    header p { font-size: 1.15em; }
+    .titulo-secao { font-size: 2em; }
+    section { padding: 70px 20px; }
+    .wpp-flutuante { width: 60px; height: 60px; font-size: 1.7em; bottom: 20px; right: 20px; }
+    .stat .num { font-size: 2.5em; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Doce Encanto</h1>
+    <p>Os doces mais deliciosos da cidade</p>
+    <a class="botao" href="https://wa.me/5511999999999" target="_blank">Peça agora pelo WhatsApp</a>
+  </header>
+
+  <section class="sobre">
+    <div class="container">
+      <h2 class="titulo-secao">Quem Somos</h2>
+      <p>Ingredientes selecionados e receitas artesanais passadas de geração em geração. Cada doce é feito com carinho pra trazer aquele gostinho de infância.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid"><div class="stat reveal"><div class="num">500+</div><div class="label">Encomendas entregues</div></div><div class="stat reveal"><div class="num">10</div><div class="label">Anos de experiência</div></div><div class="stat reveal"><div class="num">4.9★</div><div class="label">Avaliação dos clientes</div></div><div class="stat reveal"><div class="num">100%</div><div class="label">Feito artesanal</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="titulo-secao">Nossos Serviços</h2>
+      <p class="subtitulo-secao">O que oferecemos pra você</p>
+      <div class="grid"><div class="card reveal"><div class="icon">🎂</div><h3>Bolos Personalizados</h3><p>Bolos para aniversários, casamentos e eventos.</p></div><div class="card reveal"><div class="icon">🧁</div><h3>Docinhos para Festa</h3><p>Brigadeiros, beijinhos, cajuzinhos e mais.</p></div><div class="card reveal"><div class="icon">🍰</div><h3>Tortas Geladas</h3><p>Tortas refrescantes e saborosas.</p></div><div class="card reveal"><div class="icon">🎁</div><h3>Encomendas Especiais</h3><p>Fazemos sob encomenda o doce que você imaginar.</p></div></div>
+    </div>
+  </section>
+
+  <section class="galeria">
+    <div class="container">
+      <h2 class="titulo-secao">Galeria</h2>
+      <p class="subtitulo-secao">Um pouco do nosso trabalho</p>
+      <div class="galeria-grid"><div class="foto reveal"><img src="https://picsum.photos/seed/doce-encanto0/600/600" alt="Foto 1"></div><div class="foto reveal"><img src="https://picsum.photos/seed/doce-encanto1/600/600" alt="Foto 2"></div><div class="foto reveal"><img src="https://picsum.photos/seed/doce-encanto2/600/600" alt="Foto 3"></div><div class="foto reveal"><img src="https://picsum.photos/seed/doce-encanto3/600/600" alt="Foto 4"></div><div class="foto reveal"><img src="https://picsum.photos/seed/doce-encanto4/600/600" alt="Foto 5"></div><div class="foto reveal"><img src="https://picsum.photos/seed/doce-encanto5/600/600" alt="Foto 6"></div></div>
+    </div>
+  </section>
+
+  <section class="depoimentos">
+    <div class="container">
+      <h2 class="titulo-secao">O que dizem nossos clientes</h2>
+      <p class="subtitulo-secao" style="color: rgba(255,255,255,0.85);">Histórias de quem já nos escolheu</p>
+      <div class="grid"><div class="depoimento reveal"><div class="avatar"><img src="https://i.pravatar.cc/80?u=AnaPaula" alt="Ana Paula"></div><p>"Os doces são maravilhosos! Todos elogiaram na festa."</p><strong>— Ana Paula</strong></div><div class="depoimento reveal"><div class="avatar"><img src="https://i.pravatar.cc/80?u=CarlosSilva" alt="Carlos Silva"></div><p>"Atendimento excelente e entrega pontual."</p><strong>— Carlos Silva</strong></div><div class="depoimento reveal"><div class="avatar"><img src="https://i.pravatar.cc/80?u=JulianaCosta" alt="Juliana Costa"></div><p>"Melhor bolo de chocolate que já comi!"</p><strong>— Juliana Costa</strong></div></div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2 class="titulo-secao">Perguntas Frequentes</h2>
+      <p class="subtitulo-secao">Dúvidas comuns</p>
+      <div class="faq-lista"><details class="reveal"><summary>Vocês entregam em casa?</summary><p>Sim! Entregamos em toda a região com taxa a combinar.</p></details><details class="reveal"><summary>Quanto tempo antes devo encomendar?</summary><p>Para bolos, pedimos 3 dias de antecedência.</p></details><details class="reveal"><summary>Aceitam encomenda para festas grandes?</summary><p>Sim! Orçamento especial para eventos.</p></details><details class="reveal"><summary>Quais formas de pagamento?</summary><p>Pix, dinheiro e cartão.</p></details></div>
+    </div>
+  </section>
+
+  <section class="mapa">
+    <div class="container">
+      <h2 class="titulo-secao">Onde Estamos</h2>
+      <p class="subtitulo-secao">São Paulo</p>
+      <div class="mapa-box">
+        <iframe src="https://www.google.com/maps?q=São+Paulo&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="contato-secao" id="contato">
+    <div class="container">
+      <h2 class="titulo-secao">Fale Conosco</h2>
+      <p class="subtitulo-secao" style="color: rgba(255,255,255,0.9);">Envie sua mensagem pelo WhatsApp</p>
+      <form class="form" onsubmit="enviarForm(event)">
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <textarea id="msg" placeholder="Sua mensagem" required></textarea>
+        <button type="submit">Enviar pelo WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="container">
+      <h2>Pronto pra começar?</h2>
+      <p>Entre em contato agora e garanta o seu atendimento.</p>
+      <a class="botao botao-secundario" href="https://wa.me/5511999999999" target="_blank">Peça agora pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Doce Encanto</strong></p>
+    <p>© 2026 — Todos os direitos reservados</p>
+  </footer>
+
+  <a href="https://wa.me/5511999999999" target="_blank" class="wpp-flutuante">💬</a>
+
+  <script>
+    function enviarForm(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const msg = document.getElementById('msg').value;
+      const texto = encodeURIComponent('Olá! Meu nome é ' + nome + '. ' + msg);
+      const numero = "5511999999999";
+      if (numero) {
+        window.open('https://wa.me/' + numero + '?text=' + texto, '_blank');
+      } else {
+        alert('Mensagem: ' + nome + ' — ' + msg);
+      }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('ativo');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
